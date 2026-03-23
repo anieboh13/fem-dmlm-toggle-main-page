@@ -1,0 +1,157 @@
+@use "../util" as *;
+
+.cards {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: rem(30);
+
+  @include breakpoint(medium) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  @include breakpoint(large) {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+.card {
+  position: relative;
+  overflow: hidden;
+  background: var(--card-bg);
+  color: var(--text-color2);
+  //width: rem(255); //to limit the with of the card so it doesn't go all the way from screen to screen
+  padding: rem(25); // the padding for the card
+  border-radius: rem(5);
+  text-align: center; //center the content to the middle of the card
+  transition: background 200ms ease-in-out;
+  cursor: pointer;
+
+  &:hover {
+    background: var(--card-hover);
+  }
+
+  &--facebook {
+    border-top: rem(5) solid var(--facebook);
+  }
+  // for this to work you need to add a modifier to you hmtl "card--facebook"
+
+  &--x {
+    border-top: rem(5) solid var(--x);
+  }
+  // for this to work you need to add a modifier to you hmtl "card--x"
+
+  &--instagram {
+    padding-top: rem(30);
+
+    &::before {
+      content: ""; // you have to set this to something, even if it is an empty string or else it will not show in the browser
+      display: block;
+      position: absolute;
+      left: 0;
+      top: 0;
+      height: rem(5);
+      width: 100%;
+      background: linear-gradient(
+        225deg,
+        var(--instagram-end),
+        var(--instagram-mid) 50.91%,
+        var(--instagram-start) 100%
+      );
+    }
+    // border-top: rem(5) solid linear-gradient(
+    //   225deg,
+    //   var(--instagram-end) 30%
+    //   var(--instagram-mid) 30%,
+    //   var(--instagram-start) 30%,
+    //   );
+  }
+
+  &--youtube {
+    border-top: rem(5) solid var(--youtube);
+  }
+
+  &__platform {
+    display: flex; //To make it a flex box
+    justify-content: center; //to horizontally center the flex box
+    align-items: center; // to vertically center the flex box
+    height: rem(20);
+    margin-bottom: rem(
+      28
+    ); // adds a margin at the bottom of the username and icon
+    margin-top: 5px;
+  }
+
+  &__subtitle {
+    font-size: rem(14);
+    font-weight: 700;
+  }
+
+  &__icon {
+    margin-right: rem(8); //adds a margin of 8 pixels to the right of the icon
+    &--facebook {
+    }
+    &--x {
+    }
+    &--instagram {
+    }
+    &--youtube {
+    }
+  }
+
+  &__username {
+    font-size: rem(12);
+    font-weight: 700;
+    
+  }
+
+  &__followers {
+    margin-bottom: rem(25);
+  }
+
+  &__count {
+    color: var(--text-color);
+    letter-spacing: rem(-2);
+    font-weight: 700;
+    line-height: 1;
+    margin-bottom: rem(4);
+
+    &--big {
+      font-size: rem(56);
+    }
+
+    &--small {
+      font-size: rem(32);
+    }
+  }
+
+  &__label {
+    font-size: rem(12);
+    letter-spacing: rem(5);
+    font-weight: 400;
+    text-transform: uppercase;
+    color: var(--text-color2);
+  }
+
+  &__change {
+    display: flex;
+    align-items: center; //pre
+    justify-content: center;
+    font-size: rem(12);
+    font-weight: 700; //bold
+
+    // intstead of using it like this where the selector in the html will be super long like "card__change card__change--up", you can use the 'extend' rule.. where the selector remains short and in the css you put something like this.. (see comment below)
+
+    &--up {
+      //@extend .card__change;
+      color: var(--green500);
+    }
+    &--down {
+      color: var(--red500);
+    }
+
+    img {
+      margin-right: rem(4);
+    }
+  }
+
+  &__number {
+  }
+}

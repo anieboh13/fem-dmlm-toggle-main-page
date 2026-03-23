@@ -1,0 +1,29 @@
+@use "../util" as *;
+
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); //2 items on one columns 
+  grid-template-rows: repeat(2, auto); // the auto is so that the size of the grid take that of the size of the biggest item in it
+
+  justify-items: start; //shifts all items in the grid to the start of their respective grids
+
+  gap: rem(23);
+
+  .card__subtitle {
+     
+  }
+
+  .card__count { 
+    margin-bottom: 0;
+  }
+
+  .card__count,
+  .card__change {
+    align-self: end;
+  }
+
+  img,
+  .card__change {
+    justify-self: end; //takes the item to the end of its grid
+  }
+}

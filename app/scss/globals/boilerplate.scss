@@ -1,0 +1,32 @@
+html {
+  font-size: 100%; //helps with accessibility
+  box-sizing: border-box; //ensures that if you add padding to an element the total width is going to include the padding not be an addition to the padding
+
+  //example: a div with a width of 300 and padding of 20px if we have 'box-sizing: border-box;' the width plus the padding is still going ot be 300px... if not the total width will be 340px
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: var(--font-inter);
+  background: var(--background);
+  color: var(--text-color);
+  //min-height: 150vh;
+}
+
+
+.visually-hidden {
+  position: absolute;
+  left: -10000px;
+  top: auto;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+
+}
